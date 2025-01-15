@@ -4,11 +4,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run copy-assets",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "copy-assets": "cp public/manifest.json dist/ && mkdir -p dist/icons && cp public/icons/*.png dist/icons/",
+    "clean": "rm -rf dist",
+    "build-clean": "npm run clean && npm run build",
+    "generate-icons": "node scripts/generate-icons.js"
   },
   "dependencies": {
     "react": "^18.2.0",

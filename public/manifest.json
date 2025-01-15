@@ -3,21 +3,25 @@
   "name": "Staging Traffic Light",
   "version": "1.0.0",
   "description": "Monitor staging environment status",
-  "permissions": [
-    "storage",
-    "activeTab"
-  ],
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["https://myorg.atlassian.net/*"],
   "action": {
     "default_popup": "index.html",
     "default_icon": {
-      "38": "icons/icon-grey-38.png"
+      "16": "icons/icon-grey.png",
+      "32": "icons/icon-grey.png",
+      "48": "icons/icon-grey.png",
+      "128": "icons/icon-grey.png"
     }
   },
   "background": {
-    "service_worker": "src/background/background.ts",
+    "service_worker": "background.js",
     "type": "module"
   },
   "icons": {
-    "38": "icons/icon-grey-38.png"
+    "16": "icons/icon-grey.png",
+    "32": "icons/icon-grey.png",
+    "48": "icons/icon-grey.png",
+    "128": "icons/icon-grey.png"
   }
 }
