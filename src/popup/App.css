@@ -1,0 +1,13 @@
+.app {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+
+  h1 {
+    font-size: 18px;
+    padding: 16px;
+    margin: 0;
+    border-bottom: 1px solid #e1e4e8;
+    background-color: #f6f8fa;
+  }

@@ -25,7 +25,7 @@ async function generateIcons() {
       const svg = generateSVG(color, size);
       const filename = `public/icons/icon-${color}-${size}.svg`;
       await writeFile(filename, svg);
-      console.log(`Generated ${filename}`);
+      // console.log(`Generated ${filename}`);
     }
   }
 }

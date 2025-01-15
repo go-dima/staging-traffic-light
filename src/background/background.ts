@@ -1,11 +1,21 @@
+import { CONNECTION_PORT, MESSAGE_TYPE } from "../utils/constants";
 import { JiraService } from "./jiraService";
 
-// Start polling when extension is installed or updated
-chrome.runtime.onInstalled.addListener(() => {
-  JiraService.startPolling();
+// Create a connection port for the popup
+chrome.runtime.onConnect.addListener((port) => {
+  if (port.name === CONNECTION_PORT) {
+    port.onMessage.addListener(async (msg) => {
+      if (msg.type === MESSAGE_TYPE.GET) {
+        try {
+          const issues = await JiraService.getLatestIssues();
+          port.postMessage({ type: MESSAGE_TYPE.DATA, data: issues });
+        } catch (error: any) {
+          port.postMessage({ type: MESSAGE_TYPE.ERROR, error: error.message });
+        }
+      }
+    });
+  }
 });
 
-// Start polling when browser starts
-chrome.runtime.onStartup.addListener(() => {
-  JiraService.startPolling();
-});
+// Start polling
+JiraService.startPolling();
