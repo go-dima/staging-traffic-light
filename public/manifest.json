@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Staging Traffic Light",
+  "version": "1.0.0",
+  "description": "Monitor staging environment status",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "38": "icons/icon-grey-38.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background/background.ts",
+    "type": "module"
+  },
+  "icons": {
+    "38": "icons/icon-grey-38.png"
+  }
+}
