@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Monitor staging environment status",
   "permissions": ["storage", "activeTab"],
-  "host_permissions": ["https://myorg.atlassian.net/*"],
+  "host_permissions": ["https://kodem.atlassian.net/*"],
   "action": {
     "default_popup": "index.html",
     "default_icon": {

@@ -6,4 +6,4 @@ export const MESSAGE_TYPE = {
   ERROR: "ISSUES_ERROR",
 };
 
-export const JIRA_URL = "https://myorg.atlassian.net";
+export const JIRA_URL = "https://kodem.atlassian.net";
