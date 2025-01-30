@@ -1,16 +1,34 @@
 #!/bin/bash
 
+# Default values
+CLONE=false
+ORG_NAME=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --clone)
+            CLONE=true
+            shift
+            ;;
+        *)
+            ORG_NAME=$1
+            shift
+            ;;
+    esac
+done
+
 # Check if organization parameter is provided
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <organization-name>"
+if [ -z "$ORG_NAME" ]; then
+    echo "Usage: $0 [--clone] <organization-name>"
     exit 1
 fi
 
-ORG_NAME=$1
-
-# Clone the repository
-git clone https://github.com/go-dima/staging-traffic-light.git
-cd staging-traffic-light || exit
+# Clone the repository if flag is set
+if [ "$CLONE" = true ]; then
+    git clone https://github.com/go-dima/staging-traffic-light.git
+    cd staging-traffic-light || exit
+fi
 
 # Install the dependencies
 npm install
