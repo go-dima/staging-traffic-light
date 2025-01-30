@@ -1,9 +1,31 @@
 import react from "@vitejs/plugin-react";
+import { exec } from "child_process";
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import pkg from "./package.json";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: "zip-dist",
+      closeBundle: () => {
+        const version = pkg.version;
+        exec(
+          `cd dist && zip -r ../staging-traffic-light-v${version}.zip ./*`,
+          (error) => {
+            if (error) {
+              console.error("Error creating zip:", error);
+            } else {
+              console.log(
+                `staging-traffic-light-v${version}.zip created successfully`
+              );
+            }
+          }
+        );
+      },
+    },
+  ],
   build: {
     rollupOptions: {
       input: {

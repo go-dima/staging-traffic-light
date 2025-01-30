@@ -1,0 +1,11 @@
+.ant-tag {
+    margin-inline-end: 0;
+    /* flex: 0 0 110px;
+    text-align: center; */
+}
+
+.time-ago {
+    display: flex;
+    flex: 0 0 90px;
+    justify-content: flex-end;
+}

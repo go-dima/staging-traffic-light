@@ -10,7 +10,6 @@ export class JiraService {
   static async checkStagingStatus(): Promise<void> {
     try {
       const response = await fetchStagingIssues();
-      console.log(`[${getFormattedTimestamp()}] Fetched issues: ${response}`); // Debug log
       this.latestResponse = response;
       const issueCount = response.issues.length;
 
@@ -30,11 +29,11 @@ export class JiraService {
       if (!this.latestResponse) {
         await this.checkStagingStatus();
       }
-      // console.log(
-      //   `[${getFormattedTimestamp()}] Returning latest issues: ${
-      //     this.latestResponse
-      //   }`
-      // ); // Debug log
+      console.log(
+        `[${getFormattedTimestamp()}] Returning latest issues: ${
+          this.latestResponse?.issues
+        }`
+      ); // Debug log
       return this.latestResponse || { issues: [] };
     } catch (error) {
       console.error("Error getting latest issues:", error);

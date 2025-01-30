@@ -9,6 +9,7 @@ export async function fetchStagingIssues(): Promise<JiraResponse> {
     const params = new URLSearchParams({
       jql: JQL_QUERY,
       fields: "assignee",
+      expand: "changelog",
     });
 
     const response = await fetch(`${JIRA_API_URL}?${params}`);

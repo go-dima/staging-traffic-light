@@ -1,5 +1,5 @@
 import { JiraProvider } from "../context/JiraContext";
-import { IssueList } from "../components/IssueList";
+import { IssuesList } from "../components/IssuesList";
 import "./App.css";
 
 export function App() {
@@ -7,7 +7,7 @@ export function App() {
     <JiraProvider>
       <div className="app">
         <h1>Issues In Staging</h1>
-        <IssueList />
+        <IssuesList />
       </div>
     </JiraProvider>
   );

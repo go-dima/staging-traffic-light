@@ -1,0 +1,56 @@
+.issue-list {
+    min-width: 350px;
+    padding: 16px;
+}
+
+.issue-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+.issue-item:last-child {
+    border-bottom: none;
+}
+
+.assignee-info {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.name {
+    color: #24292e;
+    font-size: 14px;
+}
+
+.issue-link {
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    flex: 0 0 80px;
+}
+
+.issue-link:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 16px;
+    text-align: center;
+    color: #586069;
+}
+
+.error {
+    color: #cb2431;
+}

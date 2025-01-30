@@ -8,6 +8,22 @@ export interface Issue {
   fields: {
     assignee: Assignee;
   };
+  changelog: {
+    histories: JiraHistory[];
+  };
+}
+
+export interface JiraHistory {
+  id: string;
+  created: string;
+  items: {
+    field: string;
+    fieldtype: string;
+    from: string;
+    fromString: string;
+    to: string;
+    toString: string;
+  }[];
 }
 
 export interface Assignee {

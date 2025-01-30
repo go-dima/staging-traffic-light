@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Staging Traffic Light",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Monitor staging environment status",
   "permissions": ["storage", "activeTab"],
   "host_permissions": ["https://myorg.atlassian.net/*"],
