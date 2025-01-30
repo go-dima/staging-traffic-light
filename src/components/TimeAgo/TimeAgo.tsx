@@ -11,7 +11,7 @@ interface TimeAgoProps {
 const getStagingUpdate = (histories: JiraHistory[]) => {
   return (
     histories.find((history) => {
-      return history.items.some(
+      return history.items.find(
         (i) => i.field === "status" && i.toString === "STAGING"
       );
     })?.created || ""

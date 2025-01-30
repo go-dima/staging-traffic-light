@@ -20,31 +20,40 @@ export const IssuesList = () => {
 
   return (
     <div className="issue-list">
-      {issues.map((issue) => {
-        const { id: issueId, key: issueKey, fields, changelog } = issue;
-        return (
-          <div key={issueId} className="issue-item">
-            <div className="assignee-info">
-              <img
-                src={fields.assignee?.avatarUrls["24x24"]}
-                alt={fields.assignee?.displayName || "No assignee"}
-                className="avatar"
-              />
-              <span className="name">
-                {fields.assignee?.displayName || "Unassigned"}
-              </span>
+      {issues
+        .sort((issue) => {
+          const toStaging = issue.changelog.histories.find((history) => {
+            return history.items.find(
+              (item) => item.field === "status" && item.toString === "STAGING"
+            );
+          }) || { created: "" };
+          return new Date(toStaging.created).getTime();
+        })
+        .map((issue) => {
+          const { id: issueId, key: issueKey, fields, changelog } = issue;
+          return (
+            <div key={issueId} className="issue-item">
+              <div className="assignee-info">
+                <img
+                  src={fields.assignee?.avatarUrls["24x24"]}
+                  alt={fields.assignee?.displayName || "No assignee"}
+                  className="avatar"
+                />
+                <span className="name">
+                  {fields.assignee?.displayName || "Unassigned"}
+                </span>
+              </div>
+              <a
+                href={`${JIRA_URL}/browse/${issueKey}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="issue-link">
+                {issueKey}
+              </a>
+              <TimeAgo history={changelog.histories} />
             </div>
-            <a
-              href={`${JIRA_URL}/browse/${issueKey}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="issue-link">
-              {issueKey}
-            </a>
-            <TimeAgo history={changelog.histories} />
-          </div>
-        );
-      })}
+          );
+        })}
     </div>
   );
 };
