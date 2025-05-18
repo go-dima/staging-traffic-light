@@ -12,7 +12,8 @@
     "copy-assets": "cp public/manifest.json dist/ && mkdir -p dist/icons && cp public/icons/*.png dist/icons/",
     "clean": "rm -rf dist",
     "build-clean": "npm run clean && npm run build",
-    "generate-icons": "node scripts/generate-icons.js"
+    "generate-icons": "node scripts/generate-icons.js",
+    "local-pack": "./pack.sh"
   },
   "dependencies": {
     "antd": "^5.23.3",
